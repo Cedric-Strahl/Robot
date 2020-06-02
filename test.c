@@ -1,8 +1,12 @@
-//TOTO
 
 int main(void) {
 
-//TOTO
+    InitOscillator();
+    InitIO();
+    InitTimer23();
+    InitTimer1();
+    InitTimer4();
+    InitADC1();
     InitPWM();
 
     unsigned int *result = ADCGetResult();
