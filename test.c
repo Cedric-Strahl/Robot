@@ -2,12 +2,7 @@
 
 int main(void) {
 
-    InitOscillator();
-    InitIO();
-    InitTimer23();
-    InitTimer1();
-    InitTimer4();
-    InitADC1();
+//TOTO
     InitPWM();
 
     unsigned int *result = ADCGetResult();
