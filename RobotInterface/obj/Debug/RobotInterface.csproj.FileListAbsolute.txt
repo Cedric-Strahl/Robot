@@ -26,3 +26,6 @@ C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.Properties
 C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.csproj.GenerateResource.cache
 C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.exe
 C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.pdb
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\bin\Debug\ExtendedSerialPort.dll
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\bin\Debug\ExtendedSerialPort.pdb
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.csproj.CopyComplete

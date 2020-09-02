@@ -22,7 +22,7 @@
             <ColumnDefinition MaxWidth="30"/>
         </Grid.ColumnDefinitions>
         <GroupBox x:Name="Emission" Header="Emission" Margin="0" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="1">
-            <TextBox AcceptsReturn="True" x:Name="TextBoxEmission" Margin="0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" SpellCheck.IsEnabled="True" Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="True" CaretBrush="Black"/>
+            <TextBox AcceptsReturn="False" x:Name="TextBoxEmission" Margin="0" TextWrapping="Wrap" TextChanged="TextBox_TextChanged" SpellCheck.IsEnabled="True" Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="True" CaretBrush="Black" KeyUp="TextBoxEmission_KeyUp"/>
         </GroupBox>
         <GroupBox x:Name="Réception" Header="Réception" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="3" Grid.Row="1">
             <TextBox IsReadOnly="True" x:Name="TextBoxRéception" Margin="0" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}"/>
