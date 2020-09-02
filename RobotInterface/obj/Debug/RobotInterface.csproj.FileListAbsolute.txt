@@ -12,3 +12,17 @@ D:\Document_D\IUT GEII\Projet Robot\Partie 2\RobotInterface\RobotInterface\obj\D
 D:\Document_D\IUT GEII\Projet Robot\Partie 2\RobotInterface\RobotInterface\obj\Debug\RobotInterface.csproj.GenerateResource.cache
 D:\Document_D\IUT GEII\Projet Robot\Partie 2\RobotInterface\RobotInterface\obj\Debug\RobotInterface.exe
 D:\Document_D\IUT GEII\Projet Robot\Partie 2\RobotInterface\RobotInterface\obj\Debug\RobotInterface.pdb
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\bin\Debug\RobotInterface.exe.config
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\bin\Debug\RobotInterface.exe
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\bin\Debug\RobotInterface.pdb
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.csprojAssemblyReference.cache
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\MainWindow.g.cs
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\App.g.cs
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface_MarkupCompile.cache
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface_MarkupCompile.lref
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\MainWindow.baml
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.g.resources
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.Properties.Resources.resources
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.csproj.GenerateResource.cache
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.exe
+C:\GitHub\Robot_Cedric_Strahl\RobotInterface\obj\Debug\RobotInterface.pdb

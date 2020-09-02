@@ -1,0 +1,14 @@
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\bin\Debug\WpfRobotInterface.exe.config
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\bin\Debug\WpfRobotInterface.exe
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\bin\Debug\WpfRobotInterface.pdb
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.csprojAssemblyReference.cache
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\RobotInterface.g.cs
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\App.g.cs
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface_MarkupCompile.cache
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface_MarkupCompile.lref
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\RobotInterface.baml
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.g.resources
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.Properties.Resources.resources
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.csproj.GenerateResource.cache
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.exe
+C:\GitHub\Robot_Cedric_Strahl\CodeRobot\Robot\WpfRobotInterface\obj\Debug\WpfRobotInterface.pdb
