@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExtendedSerialPort;
-
+using System.Windows.Threading;
 
 namespace RobotInterface
 {
@@ -22,28 +22,66 @@ namespace RobotInterface
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         bool ColorButtonEnvoyer = true;
-        SerialPort serialPort1;
+        private ReliableSerialPort serialPort1;
+        private DispatcherTimer GuiUpdate = new DispatcherTimer();
+        Robot robot = new Robot();
 
         public MainWindow()
         {
-            serialPort1 = new ReliableSerialPort("COM1", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ReliableSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
+            serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
-            InitializeComponent();
+
+            GuiUpdate.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            GuiUpdate.Tick += GuiUpdate_Tick;
+            GuiUpdate.Start();
+        }
+
+        private void GuiUpdate_Tick(object sender, EventArgs e)
+        {/*
+            if (robot.receivedTextOnSerialPort != "")
+            {
+                TextBoxRéception.Text += robot.receivedTextOnSerialPort;
+                robot.receivedTextOnSerialPort = "";
+            }*/
+
+            while(robot.byteListReceived.Count>0)
+            {
+                byte b = robot.byteListReceived.Dequeue();
+                TextBoxRéception.Text += "0x" + b.ToString("X2") + " ";
+            }
+
+            /*
+            foreach(byte b in e.Data)
+            {
+                e.Data.Dequeue(b);
+            }*/
+        }
+
+        private void SerialPort1_DataReceived(object sender, DataReceivedArgs e)
+        {
+            //robot.receivedTextOnSerialPort += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
+
+            foreach(byte b in e.Data)
+            {
+                robot.byteListReceived.Enqueue(b);
+            }
+        }
+
+        private void SendMessage()
+        {
+            serialPort1.WriteLine(TextBoxEmission.Text);
+            TextBoxEmission.Text = null;
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-        }
-
-        private void SendMessage()
-        {
-            TextBoxRéception.Text = "Reçu : " + TextBoxEmission.Text + "\n" + TextBoxRéception.Text;
-            TextBoxEmission.Text = null;
-            serialPort1.WriteLine(TextBoxEmission.Text);
         }
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
@@ -61,6 +99,24 @@ namespace RobotInterface
             {
                 SendMessage();
             }
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxEmission.Text = "";
+            TextBoxRéception.Text = "";
+        }
+
+        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] byteListe = new byte[20] ;
+            int i;
+            for(i=0;i<20;i++)
+            {
+                byteListe[i] = (byte)(2 * i);
+            }
+            serialPort1.Write(byteListe, 0, byteListe.Count());
+            TextBoxRéception.Text += "\r";
         }
     }
 }
