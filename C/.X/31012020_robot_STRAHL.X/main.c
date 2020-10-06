@@ -29,6 +29,7 @@ int main(void) {
     unsigned int *result = ADCGetResult();
     int ADCValue0 = 0, ADCValue1 = 0, ADCValue2 = 0, ADCValue3 = 0, ADCValue4 = 0, ADCValue5 = 0;
     float volts = 0;
+    int i=0;
     
     /****************************************************************************************************/
     // Boucle Principale
@@ -62,7 +63,7 @@ int main(void) {
                 volts=((float)result[3])*3.3/4096*3.2;
                 robotState.distanceTelemetreGauche2 = 34/volts-5;
             }
-        int i;
+
         for (i=0; i< CB_RX1_GetDataSize();i++)
         {
             unsigned char c = CB_RX1_Get();
@@ -70,6 +71,7 @@ int main(void) {
             LED_BLANCHE =1;
         }
         __delay32(1000);
+
         LED_BLANCHE = 0;
         //SendMessage((unsigned char*) "Bonjour", 7);
     } // fin while
