@@ -25,14 +25,16 @@ namespace RobotInterface
     
     public partial class MainWindow : Window
     {
+        bool modeCommande = false;
         bool ColorButtonEnvoyer = true;
         private ReliableSerialPort serialPort1;
         private DispatcherTimer GuiUpdate = new DispatcherTimer();
         Robot robot = new Robot();
+        string selectedPortCOM;
 
         public MainWindow()
         {
-            serialPort1 = new ReliableSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ReliableSerialPort("COM5", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -87,10 +89,6 @@ namespace RobotInterface
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
             SendMessage();
-
-            buttonEnvoyer.Background = ColorButtonEnvoyer == true ? Brushes.RoyalBlue : Brushes.Beige;
-            ColorButtonEnvoyer = !ColorButtonEnvoyer;
-
         }
 
         private void TextBoxEmission_KeyUp(object sender, KeyEventArgs e)
@@ -117,6 +115,25 @@ namespace RobotInterface
             }
             serialPort1.Write(byteListe, 0, byteListe.Count());
             TextBoxRéception.Text += "\r";
+        }
+
+        private void ChoixCOM_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedPortCOM = ChoixCOM.SelectedItem.ToString();
+        }
+
+        private void Open(object sender, RoutedEventArgs e)
+        {
+            string[] ports = SerialPort.GetPortNames();
+
+            for(int i=0; i<ports.Length; i++)
+            {
+                if(!ChoixCOM.Items.Contains(ports[i]))
+                {
+                    ChoixCOM.Items.Add(ports[i]);
+                }
+
+            }
         }
     }
 }

@@ -3,26 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/Robot.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/IO.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/PWM.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/main.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/main.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/PWM.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/UART.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/IO.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/timer.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/ChipConfig.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/timer.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/etats.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/ADC.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/UART.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/ADC.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/Toolbox.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/etats.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/Robot.h</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/Toolbox.c</file>
-            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_JACQ.X/ChipConfig.c</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/CB_TX1.c</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/UART.c</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/main.c</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/CB_TX1.h</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/timer.c</file>
+            <file>file:/C:/GitHub/Robot_Cedric_Strahl/C/.X/31012020_robot_STRAHL.X/UART.h</file>
         </group>
     </open-files>
 </project-private>

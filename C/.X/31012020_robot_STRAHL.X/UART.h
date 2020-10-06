@@ -1,10 +1,3 @@
-/* 
- * File:   UART.h
- * Author: cedri
- *
- * Created on 25 septembre 2020, 09:13
- */
-
 #ifndef UART_H
 #define	UART_H
 
@@ -13,6 +6,8 @@ extern "C" {
 #endif
 
 void InitUART ( void ) ;
+void SendMessageDirect(unsigned char* message, int length);
+//void __attribute__((interrupt , no_auto_psv)) _U1RXInterrupt(void);
 
 #ifdef	__cplusplus
 }

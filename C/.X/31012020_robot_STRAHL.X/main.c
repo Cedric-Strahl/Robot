@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <xc.h>
+#include <libpic30.h>
 #include "ChipConfig.h"
 #include "IO.h"
 #include "timer.h"
@@ -11,6 +12,8 @@
 #include "Toolbox.h"
 #include "etats.h"
 #include "UART.h"
+#include "CB_TX1.h"
+#include "CB_RX1.h"
 
 int main(void) {
 
@@ -21,7 +24,8 @@ int main(void) {
     InitTimer4();
     InitADC1();
     InitPWM();
-
+    InitUART();
+    
     unsigned int *result = ADCGetResult();
     int ADCValue0 = 0, ADCValue1 = 0, ADCValue2 = 0, ADCValue3 = 0, ADCValue4 = 0, ADCValue5 = 0;
     float volts = 0;
@@ -30,7 +34,6 @@ int main(void) {
     // Boucle Principale
     /****************************************************************************************************/
     while (1) {
-        //LED_BLANCHE = !LED_BLANCHE;
         
         if(compteurInverseur%2)
             LED_ORANGE = 1;
@@ -59,6 +62,15 @@ int main(void) {
                 volts=((float)result[3])*3.3/4096*3.2;
                 robotState.distanceTelemetreGauche2 = 34/volts-5;
             }
+        int i;
+        for (i=0; i< CB_RX1_GetDataSize();i++)
+        {
+            unsigned char c = CB_RX1_Get();
+            SendMessage(&c,1);
+            LED_BLANCHE =1;
+        }
+        __delay32(1000);
+        LED_BLANCHE = 0;
+        //SendMessage((unsigned char*) "Bonjour", 7);
     } // fin while
-
 }
