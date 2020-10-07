@@ -29,7 +29,7 @@ int main(void) {
     unsigned int *result = ADCGetResult();
     int ADCValue0 = 0, ADCValue1 = 0, ADCValue2 = 0, ADCValue3 = 0, ADCValue4 = 0, ADCValue5 = 0;
     float volts = 0;
-    int i=0;
+
     
     /****************************************************************************************************/
     // Boucle Principale
@@ -64,7 +64,8 @@ int main(void) {
                 robotState.distanceTelemetreGauche2 = 34/volts-5;
             }
 
-        for (i=0; i< CB_RX1_GetDataSize();i++)
+        int i;
+        for (i=0; i < CB_RX1_GetDataSize(); i++)
         {
             unsigned char c = CB_RX1_Get();
             SendMessage(&c,1);

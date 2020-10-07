@@ -33,11 +33,11 @@ namespace RobotInterface
         string selectedPortCOM;
 
         public MainWindow()
-        {
+        {/*
             serialPort1 = new ReliableSerialPort("COM5", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
-
+            */
             GuiUpdate.Interval = new TimeSpan(0, 0, 0, 0, 100);
             GuiUpdate.Tick += GuiUpdate_Tick;
             GuiUpdate.Start();
@@ -132,8 +132,27 @@ namespace RobotInterface
                 {
                     ChoixCOM.Items.Add(ports[i]);
                 }
-
             }
+        }
+
+        private void ConnectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            string select = ChoixCOM.Text;
+            if (select != "Null" && ChoixCOM.SelectedItem != null)
+            {
+                if (serialPort1 == null)
+                {
+                    serialPort1 = new ReliableSerialPort(select, 115200, Parity.None, 8, StopBits.One);
+                    serialPort1.DataReceived += SerialPort1_DataReceived;
+                    serialPort1.Open();
+                }
+            }
+
+            if((ConnectionButton.Background != Brushes.Green) && (serialPort1 != null))
+            {
+                ConnectionButton.Background = Brushes.Green;
+            }
+
         }
     }
 }
