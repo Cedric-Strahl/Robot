@@ -18,19 +18,22 @@ using System.Windows.Threading;
 
 namespace RobotInterface
 {
-  
+
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
-        bool modeCommande = false;
-        bool ColorButtonEnvoyer = true;
+        //----------------------------------------Variables
+
+        private int modeCommande = 0; //0=stop; 1=manuel; 2=auto
         private ReliableSerialPort serialPort1;
         private DispatcherTimer GuiUpdate = new DispatcherTimer();
-        Robot robot = new Robot();
-        string selectedPortCOM;
+        private Robot robot = new Robot();
+        private string selectedPortCOM = "NULL";
+
+        //----------------------------------------Port série
 
         public MainWindow()
         {/*
@@ -51,7 +54,7 @@ namespace RobotInterface
                 robot.receivedTextOnSerialPort = "";
             }*/
 
-            while(robot.byteListReceived.Count>0)
+            while (robot.byteListReceived.Count > 0)
             {
                 byte b = robot.byteListReceived.Dequeue();
                 TextBoxRéception.Text += "0x" + b.ToString("X2") + " ";
@@ -68,34 +71,104 @@ namespace RobotInterface
         {
             //robot.receivedTextOnSerialPort += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
 
-            foreach(byte b in e.Data)
+            foreach (byte b in e.Data)
             {
                 robot.byteListReceived.Enqueue(b);
             }
         }
 
-        private void SendMessage()
-        {
-            serialPort1.WriteLine(TextBoxEmission.Text);
-            TextBoxEmission.Text = null;
+        //----------------------------------------UART
 
+        byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
+        {
+            byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
+
+            byte checksum = trame[0];
+            for (int i = 1; i < trame.Length; i++)
+            {
+                checksum ^= trame[i];
+            }
+            System.Diagnostics.Debug.WriteLine("[CHECKSUM] " + trame + " Result : " + checksum);
+            return checksum;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
+            byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
+            byte[] checksum = new byte[] { CalculateChecksum(msgFunction, msgPayloadLength, msgPayload) };
+            trame = Combine(trame, checksum);
+            if (serialPort1 != null)
+                serialPort1.Write(trame, 0, trame.Length);
+        }
 
+        byte[] EncodeWithoutChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
+        {
+            // Convert Function to byte
+            byte LbyteFunction = (byte)(msgFunction >> 0);
+            byte HbyteFunction = (byte)(msgFunction >> 8);
+
+            byte LbytePayloadsLength = (byte)(msgPayloadLength >> 0);
+            byte HbytePayloadsLength = (byte)(msgPayloadLength >> 8);
+
+            // Append all bytes
+            byte[] trame = new byte[] { 0xFE, HbyteFunction, LbyteFunction, HbytePayloadsLength, LbytePayloadsLength };
+            trame = Combine(trame, msgPayload);
+            return trame;
+        }
+
+        public static byte[] Combine(byte[] first, byte[] second)
+        {
+            byte[] bytes = new byte[first.Length + second.Length];
+            Buffer.BlockCopy(first, 0, bytes, 0, first.Length);
+            Buffer.BlockCopy(second, 0, bytes, first.Length, second.Length);
+            return bytes;
+        }
+
+        //----------------------------------------Boîte de message
+
+        private void SendMessage()
+        {
+            if (selectedPortCOM != "NULL")
+            {
+                serialPort1.WriteLine(TextBoxEmission.Text);
+                if (TextBoxRéception.Text != "")
+                    TextBoxRéception.Text = TextBoxRéception.Text + "\n";
+                TextBoxEmission.Text = null;
+            }
         }
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
-            SendMessage();
+            if (TextBoxEmission.Text != "")
+                SendMessage();
         }
 
         private void TextBoxEmission_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (TextBoxEmission.Text != "")
             {
-                SendMessage();
+                if (e.Key == Key.Enter)
+                {
+                    SendMessage();
+                }
+            }
+        }
+
+        private void buttonTest_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedPortCOM != "NULL")
+            {
+                byte[] byteListe = new byte[20];
+                int i;
+                for (i = 0; i < 20; i++)
+                {
+                    byteListe[i] = (byte)(2 * i);
+                }
+                serialPort1.Write(byteListe, 0, byteListe.Count());
+
+                if (TextBoxRéception.Text != "")
+                    TextBoxRéception.Text += "\n";
+
             }
         }
 
@@ -105,17 +178,7 @@ namespace RobotInterface
             TextBoxRéception.Text = "";
         }
 
-        private void buttonTest_Click(object sender, RoutedEventArgs e)
-        {
-            byte[] byteListe = new byte[20] ;
-            int i;
-            for(i=0;i<20;i++)
-            {
-                byteListe[i] = (byte)(2 * i);
-            }
-            serialPort1.Write(byteListe, 0, byteListe.Count());
-            TextBoxRéception.Text += "\r";
-        }
+        //----------------------------------------Boutons Interface
 
         private void ChoixCOM_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -126,9 +189,9 @@ namespace RobotInterface
         {
             string[] ports = SerialPort.GetPortNames();
 
-            for(int i=0; i<ports.Length; i++)
+            for (int i = 0; i < ports.Length; i++)
             {
-                if(!ChoixCOM.Items.Contains(ports[i]))
+                if (!ChoixCOM.Items.Contains(ports[i]))
                 {
                     ChoixCOM.Items.Add(ports[i]);
                 }
@@ -148,11 +211,48 @@ namespace RobotInterface
                 }
             }
 
-            if((ConnectionButton.Background != Brushes.Green) && (serialPort1 != null))
+            if ((ConnectionButton.Background != Brushes.Green) && (serialPort1 != null))
             {
                 ConnectionButton.Background = Brushes.Green;
+                ConnectionButton.Content = "Connecte";
             }
 
+        }
+
+        private void ModeAuto_Checked(object sender, RoutedEventArgs e)
+        {
+            modeCommande = 1;
+            TextBoxInParametre.Text = modeCommande.ToString();
+        }
+
+        private void ModeManuel_Checked(object sender, RoutedEventArgs e)
+        {
+            modeCommande = 2;
+            TextBoxVitesseMoteurDroit.Text = SlideMoteurDroit.Value.ToString(); ;
+            TextBoxVitesseMoteurGauche.Text = SlideMoteurGauche.Value.ToString(); ;
+            TextBoxInParametre.Text = modeCommande.ToString();
+        }
+
+        private void ModeStop_Checked(object sender, RoutedEventArgs e)
+        {
+            modeCommande = 0;
+            SlideMoteurDroit.Value = 0;
+            SlideMoteurGauche.Value = 0;
+            TextBoxVitesseMoteurDroit.Text = "0";
+            TextBoxVitesseMoteurGauche.Text = "0";
+            TextBoxInParametre.Text = modeCommande.ToString();
+        }
+
+        private void SlideMoteurDroit_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (modeCommande == 2)
+                TextBoxVitesseMoteurDroit.Text = SlideMoteurDroit.Value.ToString();
+        }
+
+        private void SlideMoteurGauche_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (modeCommande == 2)
+                TextBoxVitesseMoteurGauche.Text = SlideMoteurGauche.Value.ToString();
         }
     }
 }
