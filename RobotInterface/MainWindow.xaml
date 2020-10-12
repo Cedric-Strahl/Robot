@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobotInterface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="658" Width="1004.333">
+        Title="VisualisationArrietty" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowState="Maximized">
 
 
     <Grid x:Name="Fond_d_application" IsEnabled="True" Background="#FF2D2D2D">
@@ -61,7 +61,7 @@
             <GroupBox x:Name="Commandes" Header="Commandes manuelles" Background="#FF646464" FontFamily="ROG Fonts" Foreground="#FFD5D5D5" BorderBrush="{x:Null}" FontSize="18" Grid.RowSpan="5" Grid.ColumnSpan="5" Margin="0,0,0,-0.438"/>
 
 
-            <Slider x:Name="SlideMoteurDroit" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" ValueChanged="SlideMoteurDroit_ValueChanged" Grid.Row="3" Grid.Column="3" LargeChange="3" Minimum="-40" Maximum="40" SmallChange="1" FontFamily="ROG Fonts" FontSize="18">
+            <Slider x:Name="SlideMoteurDroit" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" IsSnapToTickEnabled="True" ValueChanged="SlideMoteurDroit_ValueChanged" Grid.Row="3" Grid.Column="3" LargeChange="3" Minimum="-40" Maximum="40" SmallChange="1" FontFamily="ROG Fonts" FontSize="18">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="1"/>
@@ -77,7 +77,7 @@
             <TextBlock x:Name="NameSlideLeft" TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Text="Moteur Gauche" FontSize="18" Grid.Row="1" Grid.Column="1"/>
 
 
-            <Slider x:Name="SlideMoteurGauche" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" ValueChanged="SlideMoteurGauche_ValueChanged" Grid.Row="3" Grid.Column="1" Minimum="-40" Maximum="40" LargeChange="3" SmallChange="1" FontSize="18" FontFamily="ROG Fonts">
+            <Slider x:Name="SlideMoteurGauche" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" IsSnapToTickEnabled="True" ValueChanged="SlideMoteurGauche_ValueChanged" Grid.Row="3" Grid.Column="1" Minimum="-40" Maximum="40" LargeChange="3" SmallChange="1" FontSize="18" FontFamily="ROG Fonts">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="1"/>
@@ -119,15 +119,15 @@
 
             <GroupBox x:Name="DistancesBox" Header="Distances" BorderBrush="{x:Null}" Foreground="#FFD5D5D5" Background="#FF646464" FontFamily="ROG Fonts" Grid.ColumnSpan="11" Grid.RowSpan="5" FontSize="18"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Text="ADC 1" Grid.Column="1" Grid.Row="1" FontSize="18"/>
-            <TextBox x:Name="TextBoxDistanceADC1" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxDistanceADC1" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="3" Grid.Row="1" FontSize="18"><Run Text="ADC "/><Run Text="2"/></TextBlock>
-            <TextBox x:Name="TextBoxDistanceADC2" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxDistanceADC2" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="9" Grid.Row="1" FontSize="18"><Run Text="ADC "/><Run Text="5"/></TextBlock>
-            <TextBox x:Name="TextBoxDistanceADC5" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="9" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxDistanceADC5" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="9" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="7" Grid.Row="1" FontSize="18"><Run Text="ADC "/><Run Text="4"/></TextBlock>
-            <TextBox x:Name="TextBoxDistanceADC4" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="7" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxDistanceADC4" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="7" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="5" Grid.Row="1" FontSize="18"><Run Text="ADC "/><Run Text="3"/></TextBlock>
-            <TextBox x:Name="TextBoxDistanceADC3" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="5" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxDistanceADC3" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="5" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
         </Grid>
 
 
@@ -153,12 +153,12 @@
             </Grid.ColumnDefinitions>
 
             <GroupBox x:Name="Parametres" Header="Parametres" FontFamily="ROG Fonts" BorderBrush="{x:Null}" Foreground="#FFD5D5D5" Background="#FF646464" Grid.ColumnSpan="7" Grid.RowSpan="7" FontSize="18"/>
-            <Button x:Name="buttonTest" Content="Test" Click="buttonTest_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="3" FontSize="18" BorderBrush="{x:Null}"/>
-            <Button x:Name="buttonEnvoyer" Content="Envoyer" Click="buttonEnvoyer_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="1" FontSize="18" BorderBrush="{x:Null}"/>
-            <Button x:Name="buttonClear" Content="Vider" Click="buttonClear_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="5" FontSize="18" BorderBrush="{x:Null}"/>
+            <Button x:Name="buttonTest" Content="Test" Click="buttonTest_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="3" FontSize="18" BorderBrush="Black"/>
+            <Button x:Name="buttonEnvoyer" Content="Envoyer" Click="buttonEnvoyer_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="1" FontSize="18" BorderBrush="Black"/>
+            <Button x:Name="buttonClear" Content="Vider" Click="buttonClear_Click" FontFamily="ROG Fonts" Grid.Column="1" Grid.Row="5" FontSize="18" BorderBrush="Black"/>
             <RadioButton x:Name="ModeAuto" Content="Mode auto" FontFamily="ROG Fonts" Margin="0,0,9,0" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="5" FontSize="18" BorderBrush="{x:Null}" Checked="ModeAuto_Checked"/>
-            <RadioButton x:Name="ModeManuel" Content="Mode manuel" FontFamily="ROG Fonts" VerticalContentAlignment="Center" Grid.Column="5" Grid.Row="3" FontSize="18" BorderBrush="{x:Null}" Checked="ModeManuel_Checked"/>
-            <ComboBox x:Name="ChoixCOM" FontFamily="ROG Fonts" SelectionChanged="ChoixCOM_SelectionChanged" MouseLeftButtonDown="Open" GotFocus="Open" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="3" FontSize="18" BorderBrush="{x:Null}">
+            <RadioButton x:Name="ModeManuel" Content="Mode manuel" FontFamily="ROG Fonts" VerticalContentAlignment="Center" Grid.Column="5" Grid.Row="3" FontSize="18" BorderBrush="{x:Null}" Checked="ModeManuel_Checked" KeyUp="ModeManuel_KeyUp"/>
+            <ComboBox x:Name="ChoixCOM" FontFamily="ROG Fonts" SelectionChanged="ChoixCOM_SelectionChanged" MouseLeftButtonDown="Open" GotFocus="Open" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="3" FontSize="18" BorderBrush="Black">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                         <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -166,9 +166,9 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <Button x:Name="ConnectionButton" Content="Connexion" Click="ConnectionButton_Click" FontFamily="ROG Fonts" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="5" FontSize="18" BorderBrush="{x:Null}"/>
+            <Button x:Name="ConnectionButton" Content="Connexion" Click="ConnectionButton_Click" FontFamily="ROG Fonts" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="5" FontSize="18" BorderBrush="Black"/>
             <RadioButton x:Name="ModeStop" Content="Mode Stop" FontFamily="ROG Fonts" VerticalContentAlignment="Center" Grid.Column="5" Grid.Row="1" Checked="ModeStop_Checked" FontSize="18" BorderBrush="{x:Null}"/>
-            <TextBox x:Name="TextBoxInParametre" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="1" FontSize="18" FontFamily="ROG Fonts" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxInParametre" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="3" Grid.Row="1" FontSize="18" FontFamily="ROG Fonts" BorderBrush="Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         </Grid>
 
 
@@ -191,8 +191,8 @@
             <GroupBox x:Name="VitessesBox" Header="Vitesses" FontFamily="ROG Fonts" BorderBrush="{x:Null}" Foreground="#FFD5D5D5" Background="#FF646464" Grid.ColumnSpan="5" Grid.RowSpan="6" FontSize="18"/>
             <TextBlock Margin="0.333,0,9.667,0" TextWrapping="Wrap" Text="Moteur Droit" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" FontSize="18"/>
             <TextBlock TextWrapping="Wrap" FontFamily="ROG Fonts" TextAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="18"><Run Text="Moteur "/><Run Text="Gauche"/></TextBlock>
-            <TextBox x:Name="TextBoxVitesseMoteurGauche" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="1" Grid.Row="4" FontFamily="ROG Fonts" FontSize="18" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <TextBox x:Name="TextBoxVitesseMoteurDroit" IsReadOnly="True" Margin="0.333,0,9.667,0" TextWrapping="Wrap" Background="#FFD3DDDD" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" TextAlignment="Center" FontFamily="ROG Fonts" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="TextBoxVitesseMoteurGauche" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="1" Grid.Row="4" FontFamily="ROG Fonts" FontSize="18" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
+            <TextBox x:Name="TextBoxVitesseMoteurDroit" IsReadOnly="True" Margin="0.333,0,9.667,0" TextWrapping="Wrap" Background="#FFD3DDDD" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" TextAlignment="Center" FontFamily="ROG Fonts" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="Black"/>
         </Grid>
 
 

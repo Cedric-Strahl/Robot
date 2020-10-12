@@ -135,6 +135,7 @@ namespace RobotInterface
                     TextBoxRéception.Text = TextBoxRéception.Text + "\n";
                 TextBoxEmission.Text = null;
             }
+            else TextBoxRéception.Text =TextBoxRéception.Text + "Pas de Port Serie connecte" + "\n";
         }
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
@@ -253,6 +254,69 @@ namespace RobotInterface
         {
             if (modeCommande == 2)
                 TextBoxVitesseMoteurGauche.Text = SlideMoteurGauche.Value.ToString();
+        }
+
+        private void ModeManuel_KeyUp(object sender, KeyEventArgs e)
+        {
+            //Commande vitesse moteur droit
+            if (e.Key == Key.NumPad9)
+            {
+                SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+            }
+            if (e.Key == Key.NumPad3)
+            {
+                SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+            }
+
+            //Commande vitesse moteur gauche
+            if (e.Key == Key.NumPad7)
+            {
+                SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+            }
+            if (e.Key == Key.NumPad1)
+            {
+                SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+            }
+
+            //Commande tourner 
+            if (e.Key == Key.NumPad6)//Tourner droite
+            {
+                SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+            }
+            if (e.Key == Key.NumPad4)//Tourner gauche
+            {
+                SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+            }
+
+            //Commande vitesse globale
+            if (e.Key == Key.NumPad8)//Avancer
+            {
+                if(SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+                else if(SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                else
+                {
+                    SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+                    SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                }
+            }
+            if (e.Key == Key.NumPad2)//Reculer
+            {
+                if (SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+                else if (SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                else
+                {
+                    SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+                    SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                }
+            }
+            if (e.Key == Key.NumPad5)//Stop
+            {
+                SlideMoteurGauche.Value = 0;
+                SlideMoteurDroit.Value = 0;
+            }
+
         }
     }
 }
