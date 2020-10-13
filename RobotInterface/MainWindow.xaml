@@ -90,9 +90,38 @@
 
 
         </Grid>
+        <Grid Grid.Column="3" Grid.Row="1" Grid.RowSpan="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
 
 
-        <GroupBox x:Name="VueRobotBox" Grid.Column="3" Header="Vue Robot" Grid.RowSpan="5" FontFamily="ROG Fonts" Foreground="#FFD5D5D5" BorderBrush="{x:Null}" Grid.Row="1" FontSize="18"/>
+            <GroupBox x:Name="VueRobotBox" Header="Vue Robot" FontFamily="ROG Fonts" Foreground="#FFD5D5D5" BorderBrush="{x:Null}" FontSize="18" Grid.ColumnSpan="11" Grid.RowSpan="3"/>
+
+
+            <ProgressBar x:Name="ProgressADC1" Foreground="Red" BorderBrush="Black" Orientation="Vertical" SmallChange="1" Background="#FF2D2D2D" Value="100" Grid.Column="1" Grid.Row="1"/>
+            <ProgressBar x:Name="ProgressADC2" Foreground="Red" BorderBrush="Black" Orientation="Vertical" SmallChange="1" Background="#FF2D2D2D" Value="100" Grid.Column="3" Grid.Row="1"/>
+            <ProgressBar x:Name="ProgressADC3" Foreground="Red" BorderBrush="Black" Orientation="Vertical" SmallChange="1" Background="#FF2D2D2D" Value="100" Grid.Column="5" Grid.Row="1"/>
+            <ProgressBar x:Name="ProgressADC4" Foreground="Red" BorderBrush="Black" Orientation="Vertical" SmallChange="1" Background="#FF2D2D2D" Value="100" Grid.Column="7" Grid.Row="1"/>
+            <ProgressBar x:Name="ProgressADC5" Foreground="Red" BorderBrush="Black" Orientation="Vertical" SmallChange="1" Background="#FF2D2D2D" Value="100" Grid.Column="9" Grid.Row="1"/>
+
+
+        </Grid>
 
 
         <Grid Grid.Column="3" Grid.Row="7">
@@ -194,16 +223,6 @@
             <TextBox x:Name="TextBoxVitesseMoteurGauche" IsReadOnly="True" TextWrapping="Wrap" Background="#FFDDDDDD" Grid.Column="1" Grid.Row="4" FontFamily="ROG Fonts" FontSize="18" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black"/>
             <TextBox x:Name="TextBoxVitesseMoteurDroit" IsReadOnly="True" Margin="0.333,0,9.667,0" TextWrapping="Wrap" Background="#FFD3DDDD" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" TextAlignment="Center" FontFamily="ROG Fonts" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="Black"/>
         </Grid>
-
-
-        <ProgressBar x:Name="ProgressADC1" Grid.Column="3" HorizontalAlignment="Left" Height="131" Margin="150,23,0,0" Grid.Row="3" VerticalAlignment="Top" Width="61" Foreground="{x:Null}" BorderBrush="Black" Orientation="Vertical" SmallChange="1">
-            <ProgressBar.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="Lime"/>
-                    <GradientStop Color="Red" Offset="1"/>
-                </LinearGradientBrush>
-            </ProgressBar.Background>
-        </ProgressBar>
 
 
     </Grid>

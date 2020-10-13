@@ -28,6 +28,7 @@ void InitUART (void)
     U1MODEbits.UARTEN = 1 ; // Enable UART
     U1STAbits.UTXEN = 1 ; // Enable UART Tx
 }
+
 /*
 void SendMessageDirect(unsigned char* message, int length)
 {

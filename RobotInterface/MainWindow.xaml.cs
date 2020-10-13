@@ -81,26 +81,29 @@ namespace RobotInterface
 
         byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
-            byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
+            byte[] trame = msgPayload;
+            //byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
 
             byte checksum = trame[0];
             for (int i = 1; i < trame.Length; i++)
             {
                 checksum ^= trame[i];
             }
-            System.Diagnostics.Debug.WriteLine("[CHECKSUM] " + trame + " Result : " + checksum);
+            TextBoxInParametre.Text = "CHECKSUM = " + checksum.ToString();
+            //System.Diagnostics.Debug.WriteLine("[CHECKSUM] " + trame + " Result : " + checksum);
             return checksum;
         }
 
         void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
-            byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
+            //byte[] trame = EncodeWithoutChecksum(msgFunction, msgPayloadLength, msgPayload);
+            byte[] trame = msgPayload;
             byte[] checksum = new byte[] { CalculateChecksum(msgFunction, msgPayloadLength, msgPayload) };
             trame = Combine(trame, checksum);
             if (serialPort1 != null)
                 serialPort1.Write(trame, 0, trame.Length);
         }
-
+        /*
         byte[] EncodeWithoutChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
             // Convert Function to byte
@@ -114,15 +117,94 @@ namespace RobotInterface
             byte[] trame = new byte[] { 0xFE, HbyteFunction, LbyteFunction, HbytePayloadsLength, LbytePayloadsLength };
             trame = Combine(trame, msgPayload);
             return trame;
-        }
-
+        }*/
+        
         public static byte[] Combine(byte[] first, byte[] second)
         {
-            byte[] bytes = new byte[first.Length + second.Length];
-            Buffer.BlockCopy(first, 0, bytes, 0, first.Length);
-            Buffer.BlockCopy(second, 0, bytes, first.Length, second.Length);
-            return bytes;
+            byte[] newTrame = new byte[first.Length + second.Length];
+            Buffer.BlockCopy(first, 0, newTrame, 0, first.Length);
+            Buffer.BlockCopy(second, 0, newTrame, first.Length, second.Length);
+            return newTrame;
         }
+
+        public enum StateReception
+        {
+            Waiting,
+            FunctionMSB,
+            FunctionLSB,
+            PayloadLengthMSB,
+            PayloadLengthLSB,
+            Payload,
+            CheckSum
+        }
+
+        StateReception rcvState = StateReception.Waiting;
+        //StateReception rcvBefore = StateReception.Waiting;
+        int msgDecodedFunction = 0;
+        int msgDecodedPayloadLength = 0;
+        //byte[] msgDecodedPayload;
+        //int msgDecodedPayloadIndex = 0;
+
+        private void DecodeMessage(byte c)
+        {
+            switch (rcvState)
+            {
+                case StateReception.Waiting:
+                    if (c == 0xFE) rcvState = StateReception.FunctionMSB;
+                    break;
+
+                case StateReception.FunctionMSB:
+                    msgDecodedFunction = (ushort)(c << 8);
+                    rcvState = StateReception.FunctionLSB;
+                    break;
+
+                case StateReception.FunctionLSB:
+                    msgDecodedFunction += (ushort)(c << 0);
+                    rcvState = StateReception.PayloadLengthMSB;
+                    break;
+
+                case StateReception.PayloadLengthMSB:
+                    msgDecodedPayloadLength = (ushort)(c << 8);
+                    rcvState = StateReception.PayloadLengthLSB;
+                    break;
+
+                case StateReception.PayloadLengthLSB:
+                    msgDecodedPayloadLength += (ushort)(c << 0);
+                    if (msgDecodedPayloadLength > 0)
+                    {
+                        msgDecodedPayload = new byte[msgDecodedPayloadLength];
+                        rcvState = StateReception.Payload;
+                    }
+                    else rcvState = StateReception.CheckSum;
+                    break;
+
+                case StateReception.Payload:
+                    msgDecodedPayload[msgDecodedPayloadIndex] = c;
+                    msgDecodedPayloadIndex++;
+                    if (msgDecodedPayloadIndex >= msgDecodedPayloadLength) rcvState = StateReception.CheckSum;
+                    break;
+
+                case StateReception.CheckSum:
+                    byte calculatedChecksum = CalculateChecksum(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
+                    byte receivedChecksum = 0;
+                    if (calculatedChecksum == receivedChecksum)
+                    {
+                        //Success, on a un message valide
+                        Console.WriteLine("Message is Correct");
+                    }
+
+                    rcvState = StateReception.Waiting;
+                    msgDecodedFunction = 0;
+                    msgDecodedPayloadLength = 0;
+                    msgDecodedPayloadIndex = 0;
+                    break;
+
+                default:
+                    rcvState = StateReception.Waiting;
+                    break;
+            }
+        }
+            //rcvBefore = rcvState;
 
         //----------------------------------------Boîte de message
 
@@ -159,6 +241,10 @@ namespace RobotInterface
         {
             if (selectedPortCOM != "NULL")
             {
+                byte[] array = Encoding.ASCII.GetBytes("Arrietty");
+                UartEncodeAndSendMessage(128, array.Length, array);
+
+                /*
                 byte[] byteListe = new byte[20];
                 int i;
                 for (i = 0; i < 20; i++)
@@ -169,7 +255,7 @@ namespace RobotInterface
 
                 if (TextBoxRéception.Text != "")
                     TextBoxRéception.Text += "\n";
-
+                */
             }
         }
 
@@ -223,7 +309,9 @@ namespace RobotInterface
         private void ModeAuto_Checked(object sender, RoutedEventArgs e)
         {
             modeCommande = 1;
-            TextBoxInParametre.Text = modeCommande.ToString();
+            SlideMoteurDroit.Value = 0;
+            SlideMoteurGauche.Value = 0;
+            //TextBoxInParametre.Text = modeCommande.ToString();
         }
 
         private void ModeManuel_Checked(object sender, RoutedEventArgs e)
@@ -231,17 +319,16 @@ namespace RobotInterface
             modeCommande = 2;
             TextBoxVitesseMoteurDroit.Text = SlideMoteurDroit.Value.ToString(); ;
             TextBoxVitesseMoteurGauche.Text = SlideMoteurGauche.Value.ToString(); ;
-            TextBoxInParametre.Text = modeCommande.ToString();
+            //TextBoxInParametre.Text = modeCommande.ToString();
         }
 
         private void ModeStop_Checked(object sender, RoutedEventArgs e)
         {
             modeCommande = 0;
-            SlideMoteurDroit.Value = 0;
-            SlideMoteurGauche.Value = 0;
+
             TextBoxVitesseMoteurDroit.Text = "0";
             TextBoxVitesseMoteurGauche.Text = "0";
-            TextBoxInParametre.Text = modeCommande.ToString();
+            //TextBoxInParametre.Text = modeCommande.ToString();
         }
 
         private void SlideMoteurDroit_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -261,54 +348,54 @@ namespace RobotInterface
             //Commande vitesse moteur droit
             if (e.Key == Key.NumPad9)
             {
-                SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+                SlideMoteurDroit.Value += 5;
             }
             if (e.Key == Key.NumPad3)
             {
-                SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+                SlideMoteurDroit.Value -= 5;
             }
 
             //Commande vitesse moteur gauche
             if (e.Key == Key.NumPad7)
             {
-                SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                SlideMoteurGauche.Value += 5;
             }
             if (e.Key == Key.NumPad1)
             {
-                SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                SlideMoteurGauche.Value -= 5;
             }
 
             //Commande tourner 
             if (e.Key == Key.NumPad6)//Tourner droite
             {
-                SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
-                SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
+                SlideMoteurGauche.Value += 5;
+                SlideMoteurDroit.Value -= 5;
             }
             if (e.Key == Key.NumPad4)//Tourner gauche
             {
-                SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
-                SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
+                SlideMoteurGauche.Value -= 5;
+                SlideMoteurDroit.Value += 5;
             }
 
             //Commande vitesse globale
             if (e.Key == Key.NumPad8)//Avancer
             {
-                if(SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
-                else if(SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                if(SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurDroit.Value += 5;
+                else if(SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurGauche.Value += 5;
                 else
                 {
-                    SlideMoteurDroit.Value = SlideMoteurDroit.Value + 5;
-                    SlideMoteurGauche.Value = SlideMoteurGauche.Value + 5;
+                    SlideMoteurDroit.Value += 5;
+                    SlideMoteurGauche.Value += 5;
                 }
             }
             if (e.Key == Key.NumPad2)//Reculer
             {
-                if (SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
-                else if (SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                if (SlideMoteurDroit.Value > SlideMoteurGauche.Value) SlideMoteurDroit.Value -= 5;
+                else if (SlideMoteurDroit.Value < SlideMoteurGauche.Value) SlideMoteurGauche.Value -= 5;
                 else
                 {
-                    SlideMoteurDroit.Value = SlideMoteurDroit.Value - 5;
-                    SlideMoteurGauche.Value = SlideMoteurGauche.Value - 5;
+                    SlideMoteurDroit.Value -= 5;
+                    SlideMoteurGauche.Value -= 5;
                 }
             }
             if (e.Key == Key.NumPad5)//Stop
