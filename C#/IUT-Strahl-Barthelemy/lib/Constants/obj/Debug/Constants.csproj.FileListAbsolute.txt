@@ -1,0 +1,6 @@
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\bin\Debug\Constants.dll
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\bin\Debug\Constants.pdb
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\obj\Debug\Constants.csprojAssemblyReference.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\obj\Debug\Constants.csproj.CoreCompileInputs.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\obj\Debug\Constants.dll
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\Constants\obj\Debug\Constants.pdb

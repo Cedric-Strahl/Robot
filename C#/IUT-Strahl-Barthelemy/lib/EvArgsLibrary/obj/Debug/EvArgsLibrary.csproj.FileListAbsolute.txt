@@ -1,0 +1,9 @@
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\bin\Debug\EvArgsLibrary.dll
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\bin\Debug\EvArgsLibrary.pdb
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\bin\Debug\Robot.dll
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\bin\Debug\Robot.pdb
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\obj\Debug\EvArgsLibrary.csprojAssemblyReference.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\obj\Debug\EvArgsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\obj\Debug\EvArgsLibrary.csproj.CopyComplete
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\obj\Debug\EvArgsLibrary.dll
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\lib\EvArgsLibrary\obj\Debug\EvArgsLibrary.pdb

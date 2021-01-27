@@ -1,0 +1,15 @@
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\bin\Debug\GUI.exe.config
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\bin\Debug\GUI.exe
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\bin\Debug\GUI.pdb
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.csprojAssemblyReference.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.g.cs
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\App.g.cs
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI_MarkupCompile.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI_MarkupCompile.lref
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.baml
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.g.resources
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.exe
+C:\Users\LattePanda\Desktop\IUT-Strahl-Barthelemy\GUI\obj\Debug\GUI.pdb

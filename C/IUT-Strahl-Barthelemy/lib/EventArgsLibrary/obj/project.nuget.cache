@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "iQc7ORfOxLb4R/0IAURjUU8iCsz5XpaLP+FnvdIk2JHUyip7/IVJ+p041OWCKNFwRae3d1rB4O/MZuMsvaKuIg==",
+  "success": false,
+  "projectFilePath": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\EventArgsLibrary.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Les informations relatives au projet sont introuvables pour 'C:\\Github\\IUT-Strahl-Barthelemy\\lib\\Robot\\Robot.csproj'. Si vous utilisez Visual Studio, cela peut être dû au fait que le projet est déchargé ou qu'il ne fait pas partie de la solution actuelle. Dans ce cas, exécutez une restauration à partir de la ligne de commande. Sinon, il est possible que le fichier projet soit non valide ou que des cibles nécessaires à la restauration soient manquantes.",
+      "libraryId": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\Robot\\Robot.csproj",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8"
+      ]
+    }
+  ]
+}

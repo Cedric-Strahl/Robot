@@ -1,0 +1,49 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\EventArgsLibrary.csproj": {}
+  },
+  "projects": {
+    "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\EventArgsLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\EventArgsLibrary.csproj",
+        "projectName": "EventArgsLibrary",
+        "projectPath": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\EventArgsLibrary.csproj",
+        "packagesPath": "C:\\Users\\E103-1\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\EventArgsLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\E103-1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\Robot\\Robot.csproj": {
+                "projectPath": "C:\\Github\\IUT-Strahl-Barthelemy\\lib\\Robot\\Robot.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

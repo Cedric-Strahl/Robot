@@ -1,0 +1,40 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+       
+        xmlns:WpfWorldMapDisplay="clr-namespace:WpfWorldMapDisplay;assembly=WpfWorldMapDisplayIUT"
+       
+        xmlns:WpfOscilloscopeControl="clr-namespace:WpfOscilloscopeControl;assembly=WpfOscilloscopeControl"
+       
+        xmlns:WpfAsservissementDisplay="clr-namespace:WpfAsservissementDisplay;assembly=WpfAsservissementDisplay"
+       
+        x:Class="GUI.interfaceRobot"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="611" Width="1045">
+    <Grid Background="#FF1C1C1E">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="556*"/>
+            <ColumnDefinition Width="481*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+
+        <WpfWorldMapDisplay:WorldMapDisplay x:Name="WorldMap" Grid.RowSpan="2" Margin="0,0,10,10"/>
+
+
+        <WpfOscilloscopeControl:WpfOscilloscope x:Name="ScopeLinSpeed" Grid.Row="2"/>
+        <WpfOscilloscopeControl:WpfOscilloscope x:Name="ScopeAngSpeed" Grid.Row="3" Margin="-1,0,0,0"/>
+        <WpfAsservissementDisplay:AsservissementDisplayControl x:Name="AsservDisplay" Grid.Column="1" Grid.RowSpan="4"/>
+
+
+
+    </Grid>
+</Window>

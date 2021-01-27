@@ -1,0 +1,3 @@
+C:\GitHub\Robot_Cedric_Strahl\EvArgsLibrary\obj\Debug\EventArgsLibrary.csprojAssemblyReference.cache
+C:\GitHub\Robot_Cedric_Strahl\EvArgsLibrary\obj\Debug\EvArgsLibrary.Properties.Resources.resources
+C:\GitHub\Robot_Cedric_Strahl\EvArgsLibrary\obj\Debug\EventArgsLibrary.csproj.GenerateResource.cache
